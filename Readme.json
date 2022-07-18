@@ -1,0 +1,239 @@
+[
+    {
+        "Registration Seeker" : "https://projecta-bugdroid-v01.herokuapp.com/api/registerseeker/",
+        "Body" : {
+            "email": "zxc@academail.net",
+            "password": "asdasdasd",
+            "name": "zxc",
+            "country": "India",
+            "phone_number": "+918406543201",
+            "gender" : "male"
+        
+        },
+        "Response" : "tokens"
+    },
+    {
+        "Registration Organization" : "https://projecta-bugdroid-v01.herokuapp.com/api/registerorganization/",
+        "Body" : {
+            "email": "asd@academail.net",
+            "password": "asdasd",
+            "organization_name": "BugDroid",
+            "details": "A small team of interns developing a app with aquiring experience",
+            "size": 15,
+            "year": "2020",
+            "industry" : "A",
+            "address" : "confidential",
+            "city" : "utopia",
+            "state" : "psmathe",
+            "country" : "Loba",
+            "website" : "apexlegends.com",
+            "organization_emp_name" : "asd",
+            "organization_email" : "asd@zxc.com",
+            "designation" : "A"
+        
+        },
+        "Response" : "tokens"
+    },
+    {
+        "login" : "https://projecta-bugdroid-v01.herokuapp.com/api/login/",
+        "fields": {
+            "email": "zxc@academail.net",
+            "password": "asdasdasd"
+        },
+        "Response" : "tokens"
+    },
+    {
+        "job-creation" : "https://projecta-bugdroid-v01.herokuapp.com/api/job/create-job/",
+        "Body" : {
+            "title" : "App Developer",
+            "description" : "Have to work on mobile application development using Flutter.",
+            "job_type": "A",
+            "contract_type":"A",
+            "location" :"India",
+            "skills": "Dont have any",
+            "work_from_home" : "False",
+            "vacancies" : 2,
+            "rounds" : 1,
+            "country" : "India",
+            "education" : "B.Tech",
+            "state" : "MH",
+            "city" : "navi mumbai"
+        },
+        "Response": {
+            "id": 2,
+            "organization_id": 2,
+            "title": "App Developer",
+            "description": "Have to work on mobile application development using Flutter.",
+            "job_type": "A",
+            "contract_type": "A",
+            "skills": "Dont have any",
+            "work_from_home": false,
+            "vacancies": 2,
+            "rounds": 1,
+            "country": "India",
+            "state": "MH",
+            "city": "navi mumbai",
+            "experience": "",
+            "education": "B.Tech",
+            "last_date": "2020-09-08T07:48:40.530406Z",
+            "is_required": false,
+            "created_at": "2020-08-19T02:18:40.532403Z"
+        }
+    },
+    {
+        "Ret, Upd, Del - JOb" : "https://projecta-bugdroid-v01.herokuapp.com/api/job/RUD/${job-id-here}/",
+        "Body" : {
+            "title" : "App Developer",
+            "description" : "Have to work on mobile application development using Flutter.",
+            "job_type": "A",
+            "contract_type":"A",
+            "location" :"India",
+            "skills": "Dont have any",
+            "work_from_home" : "False",
+            "vacancies" : 2,
+            "rounds" : 1,
+            "country" : "India",
+            "education" : "B.Tech"
+        },
+        "Response": {
+            "id": 9,
+            "organization_id": 2,
+            "title": "App Developer",
+            "description": "Have to work on mobile application development using Flutter.",
+            "job_type": "A",
+            "contract_type": "A",
+            "location": "India",
+            "skills": "Dont have any",
+            "work_from_home": false,
+            "vacancies": 2,
+            "rounds": 1,
+            "country": "India",
+            "experience": "",
+            "education": "B.Tech",
+            "last_date": "2020-09-02T23:40:37.806234Z",
+            "is_required": false
+        }
+    },
+    {
+        "retrieve organization" : "https://projecta-bugdroid-v01.herokuapp.com/api/organizationdetails/",
+        "Body": "NULL",
+        "Response": {
+            "id": 10,
+            "organization_name": "BugDroid",
+            "details": "A small team of interns developing a app with aquiring experience",
+            "size": 15,
+            "year": "2020",
+            "industry": "A",
+            "address": "confidential",
+            "city": "utopia",
+            "state": "MH",
+            "country": "Loba",
+            "website": "apexlegends.com",
+            "is_approved": false,
+            "organization_emp_name": "asd",
+            "organization_email": "asd@zxc.com",
+            "designation": "A",
+            "org_reg_certificate": "UPLOADS/BugDroid/Resume_YrCuPPY.pdf",
+            "org_pan": "UPLOADS/BugDroid/Resume_qPuGaOp.pdf",
+            "other_uploads": "UPLOADS/BugDroid/Resume_rgk129Q.pdf",
+            "email": "ass@academail.net",
+            "job_list": []
+        }
+
+    },
+    {
+        "SEEKER Apply Job" : "https://projecta-bugdroid-v01.herokuapp.com/api/job/apply/${job-id-here}/",
+        "Body" : "NULL",
+        "Response" : {
+            "msg": "Applied"
+        }
+    },
+    {
+        "retrieve Seeker" : "https://projecta-bugdroid-v01.herokuapp.com/api/seekerdetails/",
+        "Body" : "Null",
+        "Response":{
+            "id": 2,
+            "name": "zxc",
+            "country": "India",
+            "phone_number": "+919406543201",
+            "gender": "male",
+            "date_of_birth": null,
+            "is_phone_verified": false,
+            "is_email_verified": false,
+            "rating": null,
+            "email": "asc@academail.net",
+            "applied_job_list": []
+        }
+    },
+    {
+        "filter/get jobs" : "https://projecta-bugdroid-v01.herokuapp.com/api/job/getJobs/?state=MH&city=navi mumbai",
+        "Body": "NULL",
+        "request": "get",
+        "Response" : "list of jobs matching the query" 
+    },
+    {
+        "registerentreprenur" : "https://projecta-bugdroid-v01.herokuapp.com/api/registerentreprenur/",
+        "Body": {
+            "user": "user id here",
+            "business" : "boolean value",
+            "idea" : "char field"
+        },
+        "Response" : {
+            "status" : "Success"
+        }
+    },
+    {
+        "registerinvestor" : "https://projecta-bugdroid-v01.herokuapp.com/api/registerinvestor/",
+        "Body": {
+            "user": "user id here",
+            "budget" : "value",
+            "identification" : "document file upload",
+            "preference" : "value",
+            "category" : "value"
+
+        },
+        "Response" : {
+            "status" : "Success"
+        }
+    },
+    {
+        "retrieve single organization details" :  "https://projecta-bugdroid-v01.herokuapp.com/api/organizationdetails/<id>",
+        "Body":"NULL",
+        "Response": "org data"
+    },
+
+    {
+        "retrieve Seeker single" : "https://projecta-bugdroid-v01.herokuapp.com/api/seekerdetails/<id>",
+        "Body" :"NULL",
+        "Response": "Seeker data"
+    },
+    {
+        "retrieve rating" : "https://projecta-bugdroid-v01.herokuapp.com/api/ratingOrg",
+        "Body":{
+            "experience" : "value",
+            "organization" : "organization id",
+            "rating" : "integer value only",
+            "seeker" : "seeker id",
+            "description" : "text field"
+        },
+        "Response":"rating object"
+    },
+    {
+        "feedback" : "https://projecta-bugdroid-v01.herokuapp.com/api/support/feedBack",
+        "Body": {
+            "user" : "user id",
+            "feedBack" : "integer value",
+            "suggestion" : "text value"
+        },
+        "Response" : "feedback object"
+    },
+    {
+        "BugReport" : "https://projecta-bugdroid-v01.herokuapp.com/api/support/BugReport",
+        "Body": {
+            "user" : "user id",
+            "description" : "description of bug",
+            "image" : "image of bug"
+        },
+        "Response" : "feedback object"
+    }
+] 
