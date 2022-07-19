@@ -11,7 +11,7 @@ from rest_framework import status
 from jobportal.api.serializer import JobSerializer
 from dj_rest_auth.views import LoginView
 from accounts.utils import send_email
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny,IsAdminUser,IsAuthenticated
 from django.urls import reverse
 from django.contrib.sites.shortcuts import get_current_site
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -207,6 +207,34 @@ class RegisterOrganizationView(generics.GenericAPIView):
             }
             return Response(resp3)
 
+class RegisterOrganizationDetailView(APIView):
+    permission_classes = [AllowAny]
+    serializer_class = OrganizationRegistrationSerializer
+
+    def get(self, request, pk):
+        org = Organization.objects.get(pk=pk)
+        org_serializer = OrganizationRegistrationSerializer(org, many=False)
+        resp1 = {
+            "code": 1,
+            "message": " Employee Detail",
+            "result": org_serializer.data
+        }
+        return Response(data=resp1, status=status.HTTP_200_OK)
+
+    def put(self, request, pk):
+        org = Organization.objects.get(pk=pk)
+        org_serializer = OrganizationRegistrationDetailSerializer(org, data=request.data)
+        if org_serializer.is_valid():
+            org_serializer.save()
+            resp2 = {
+                "code": 1,
+                "message": "Updated Successfully",
+                "result": org_serializer.data
+            }
+            return Response(data=resp2, status=status.HTTP_200_OK) 
+        else:
+            return Response(org_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
     # def post(self, request, *args, **kwargs):
     #     serializer = self.get_serializer(data=request.data)
     #     serializer.is_valid(raise_exception=True)
@@ -246,23 +274,23 @@ class RegisterOrganizationView(generics.GenericAPIView):
 
     #     return Response(tokens, status=status.HTTP_200_OK)
 
-    def patch(self, request, *args, **kwargs):
+    # def patch(self, request, *args, **kwargs):
 
-        obj_id = kwargs["id"]
-        obj = Organization.objects.get(id=obj_id)
+    #     obj_id = kwargs["id"]
+    #     obj = Organization.objects.get(id=obj_id)
 
-        if obj.user.id == request.user.id:
-            data = request.data
+    #     if obj.user.id == request.user.id:
+    #         data = request.data
 
-            for i in data:
-                setattr(obj, i, data[i])
-            obj.save()
+    #         for i in data:
+    #             setattr(obj, i, data[i])
+    #         obj.save()
 
-            print(obj)
+    #         print(obj)
 
-            return Response("Updated Organization", status=status.HTTP_200_OK)
+    #         return Response("Updated Organization", status=status.HTTP_200_OK)
 
-        return Response("Unauthorised", status=status.HTTP_401_UNAUTHORIZED)
+    #     return Response("Unauthorised", status=status.HTTP_401_UNAUTHORIZED)
 
 
 class RegisterInvestor(generics.GenericAPIView):

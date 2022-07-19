@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import dj_database_url
 from datetime import timedelta
 import os
 import urllib
@@ -25,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'yuxhp$+(wm9&8ug#-zo@wq(=1#65t6+97w5n3qem=qqjxqo&-l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -39,18 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
 
     # MY APPS:
     'accounts',
+    'invest',
     'jobportal',
-    'social',
     'resume',
+    'social',
     'support',
-    'corsheaders',
-    'django_filters',
-    'media',
-    'storages',
-
+    
     # 3rd Party Apps:
     'rest_framework',
     'allauth',
@@ -62,8 +60,10 @@ INSTALLED_APPS = [
     'django_countries',
     # "push_notifications",
     'rest_framework_word_filter',
-
-    'invest',
+    'corsheaders',
+    'django_filters',
+    'media',
+    'storages',
 ]
 # PUSH_NOTIFICATIONS_SETTINGS = {
 # "GCM_API_KEY": "<AIzaSyBF3luO9q2e44vIOcNN9RWIsO7KTTI_ewg>",
@@ -136,6 +136,12 @@ DATABASES = {
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+WHITENOISE_USE_FINDERS = True
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -209,17 +215,14 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    # 'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.authentication.TokenAuthentication',
-    # ],
 }
 
 SITE_ID = 1
-ALLOWED_HOSTS = ['projecta-bugdroid-v01.herokuapp.com',
-                 '127.0.0.1', '0.0.0.0', '192.168.0.127']
+# ALLOWED_HOSTS = ['projecta-bugdroid-v01.herokuapp.com',
+#                  '127.0.0.1', '0.0.0.0', '192.168.0.127']
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

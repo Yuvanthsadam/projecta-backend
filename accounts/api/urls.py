@@ -17,6 +17,8 @@ urlpatterns = [
     path('getSeeker/<str:name>/', GetSeekerByQuery.as_view()),# Get method working
     
     path('registerorganization/', RegisterOrganizationView.as_view()), #POST method working
+    path('registerorganization/<int:pk>/', RegisterOrganizationDetailView.as_view()), #POST method working
+    
     path('ratingorg/', RatingOrgView.as_view()), # GET method working
     # path('ratingorg/<int:id>/', RatingOrgView.as_view()),
     path('ratingorg/<int:pk>/', RatingOrgDetailView.as_view(), name='rating-detail'),# GET,DELETE method working

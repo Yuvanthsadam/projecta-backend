@@ -119,6 +119,13 @@ class OrganizationRegistrationSerializer(serializers.ModelSerializer):
         user.save()
         organization = Organization.objects.create(user=user, **validated_data)
         return organization
+    
+class OrganizationRegistrationDetailSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Organization
+        fields = '__all__'
 
 class RatingOrganizationSerializer(serializers.ModelSerializer):
 
