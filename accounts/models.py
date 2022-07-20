@@ -1,5 +1,5 @@
 from wsgiref.validate import validator
-from click import password_option
+# from click import password_option
 from django.db import models
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -7,7 +7,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
-from scipy.fft import fftfreq
+# from scipy.fft import fftfreq
 from jobportal.models import Job, AppliedJobs
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
