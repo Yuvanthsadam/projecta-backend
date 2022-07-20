@@ -1,3 +1,1 @@
-@REM web: gunicorn core.wsgi 
-
-echo "web: gunicorn core.wsgi --log-file -" > Procfile
+web: gunicorn core.wsgi --log-file -
